@@ -156,10 +156,11 @@ dbl (6): A2_KO_1, A2_KO_2, A2_KO_3, WT_1, WT_2, WT_3
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample =</span> <span class="fu">colnames</span>(data),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">condition =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A2KO"</span>, <span class="st">"WT"</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">"sample"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DESeq2 dataset</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> <span class="fu">as.matrix</span>(data), <span class="at">colData =</span> colData, <span class="at">design =</span> <span class="sc">~</span> condition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">"sample"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DESeq2 dataset</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> <span class="fu">as.matrix</span>(data), <span class="at">colData =</span> colData, <span class="at">design =</span> <span class="sc">~</span> condition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>converting counts to integer mode</code></pre>
 </div>
@@ -319,7 +320,7 @@ The order of those tied genes will be arbitrary, which may produce unexpected re
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in fgseaMultilevel(pathways = pathways, stats = stats, minSize =
-minSize, : There were 81 pathways for which P-values were not calculated
+minSize, : There were 83 pathways for which P-values were not calculated
 properly due to unbalanced (positive and negative) gene-level statistic values.
 For such pathways pval, padj, NES, log2err are set to NA. You can try to
 increase the value of the argument nPermSimple (for example set it nPermSimple
