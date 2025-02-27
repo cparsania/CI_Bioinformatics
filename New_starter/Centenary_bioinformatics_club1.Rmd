@@ -1,0 +1,276 @@
+---
+title: "Centenary_bioinformatics_club"
+author: "CC"
+date: "2025-02-16"
+output: html_document
+---
+1. Open RStudio and create an RMarkdown (.Rmd) file.
+Click File > New File > R Markdown
+Choose Document > HTML output
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+----------------------------------------------
+**Always the First thing  - Set working directory**
+
+```{r}
+# Change to your directory
+setwd("/Users/yuchen/Desktop/Scripts")
+
+```
+
+NOW, let's do some fun stuff
+
+1. Drawing in R
+
+install the package we need
+
+Different ways of installing package - **TurtleGraphics**
+
+install.packages("TurtleGraphics")
+
+ - how to access help page
+
+```{r}
+# load the package by calling the library() function:
+library("TurtleGraphics")
+
+#creates a plot region and places the Turtle in the center, facing up
+turtle_init()
+turtle_forward(dist=30)
+```
+
+1.1 Let's think how can we draw a triangle
+
+```{r}
+turtle_init()
+
+turtle_forward(dist=30)
+turtle_left(angle=120)
+turtle_forward(dist=30)
+turtle_left(angle=120)
+turtle_forward(dist=30)
+```
+
+Now let's try to draw an square or even a star!
+
+1.2 for loops - easier to do the repeat things
+
+```{r}
+turtle_init()
+
+for (i in 1:3) {  # Loop runs 3 times to complete the square
+  turtle_forward(dist=30)  # Move forward
+  turtle_left(angle=120)     # Turn left
+}
+```
+
+1.3 Define a function
+```{r}
+turtle_star <- function(r) {
+  for (i in 1:5){
+    turtle_forward(dist=r)  # Move forward
+    turtle_left(angle=144)     # Turn left
+  }
+}
+```
+
+1.4 How to call this function
+```{r}
+turtle_init()
+
+turtle_star(50)
+```
+
+
+1.5 Condition for loops
+```{r}
+turtle_init()
+
+turtle_do({
+  for (i in 1:5) {
+    x <- rnorm(1) #Generate a random number
+    print(x)
+    if (x > 0){
+      turtle_forward(dist=5)
+      turtle_star(30)  # call the turtle_star function
+      turtle_left(angle=45)     # Turn left
+    } else {
+      turtle_forward(dist=10)
+      turtle_star(20)  # Move forward
+      turtle_right(angle=120)
+    }
+  }
+})
+
+```
+**2. R - Data structures:**
+
+	•	Vectors: A sequence of elements of the same type.
+	
+	•	Lists: A collection of different types of elements.
+	
+	•	Data Frames: A table-like structure, similar to a spreadsheet.
+	
+	•	Factors: A categorical data type.
+	
+
+2.1 Create and manipulate vectors
+```{r}
+# Create a numeric vector
+numbers <- c(10, 20, 30, 40, 50)
+print(numbers)
+
+# Create a character vector
+names <- c("Alice", "Bob", "Charlie")
+print(names)
+
+# Access elements
+numbers[2]  # Get the second element
+numbers[1:3]  # Get first three elements
+```
+Key Points:
+
+✅ Vectors hold elements of the same type (numeric, character, etc.).
+
+✅ Use indexing ([]) to access elements.
+
+
+2.2 Store different types of data in a list.
+```{r}
+# Create a list with different types of elements
+person <- list(name = "Alice", age = 25, scores = c(85, 90, 95))
+print(person)
+
+# Access elements using `$` or `[[]]`
+print(person$name)  # "Alice"
+print(person[["age"]])  # 25
+print(person$scores[2])  # 90
+```
+Key Points:
+
+✅ Lists can contain different types of data.
+
+✅ Access elements using $ or [[]].
+
+
+2.3 tabular data (Most of our data will in this format)
+```{r}
+# Create a data frame
+students <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 22, 23),
+  Score = c(90, 85, 88)
+)
+
+# View data
+print(students)
+
+# Access a column
+students$Age
+
+# Access a row
+students[1, ]  # First row
+
+# Access a specific value
+students[2, "Score"]  # Bob's score
+```
+Key Points:
+
+✅ Data frames store tabular data.
+
+✅ Use $ to access columns, [row, col] for specific values.
+
+
+2.4 categorical data
+```{r}
+# Create a factor
+genders <- factor(c("Male", "Female", "Male", "Female"))
+print(genders)
+
+# Check factor levels
+levels(genders)
+
+# Convert a character vector into a factor
+education <- factor(c("High School", "Bachelor", "Master", "PhD"))
+print(education)
+```
+Key Points:
+
+✅ Factors represent categorical data (e.g., gender, education levels).
+
+✅ Use factor() to create factors.
+
+
+```{r}
+# Load TurtleGraphics package
+library(TurtleGraphics)
+
+# Initialize TurtleGraphics
+turtle_init()
+
+turtle_setpos(x=30, y=50)
+turtle_do({
+  for(i in 1:180) {
+    turtle_forward(dist=1)
+    turtle_right(angle=2)
+    }
+})
+
+turtle_setpos(x=37, y=60)
+turtle_lwd(lwd=3)
+turtle_col(col="purple")
+turtle_do({
+  for(i in 1:90) {
+    turtle_forward(dist=0.25)
+    turtle_right(angle=2)
+    }
+})
+
+turtle_setpos(x=65, y=60)
+turtle_right(angle=180)
+turtle_do({
+  for(i in 1:90) {
+    turtle_forward(dist=0.25)
+    turtle_right(angle=2)
+    }
+})
+
+turtle_setpos(x=42, y=45)
+turtle_col(col="yellow")
+turtle_lwd(lwd=8)
+turtle_do({
+  for(i in 1:90) {
+    turtle_forward(dist=0.6)
+    turtle_left(angle=2)
+    }
+})
+# Hide the turtle at the end
+turtle_hide()
+```
+
+
+
+More fun function can be found at :
+https://cran.r-project.org/web/packages/TurtleGraphics/vignettes/TurtleGraphics.pdf
