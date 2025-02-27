@@ -1,0 +1,135 @@
+---
+title: "RNA_seq_analysis"
+author: "Chirag Parsania"
+format: html
+editor: visual
+---
+
+## 
+
+```{r setup}
+
+# install.packages("BiocManager")
+# install.packages("tidyverse")
+# install.packages("devtools")
+# BiocManager::install("org.Hs.eg.db")
+# BiocManager::install("org.Mm.eg.db")
+# BiocManager::install("TxDb.Hsapiens.UCSC.hg38.knownGene")
+# BiocManager::install("TxDb.Mmusculus.UCSC.mm10.knownGene")
+# BiocManager::install("biomaRt")
+# library(magrittr)
+# library(ggplot2)
+
+```
+
+# Step1: Prepare human specific ENSEMBLE genes table 
+
+```{r}
+
+# Connect to the Ensembl database
+ensembl <- biomaRt::useEnsembl(biomart = "genes", 
+                               dataset = "hsapiens_gene_ensembl")
+
+# Fetch gene details
+genes <- biomaRt::getBM(attributes = c("ensembl_gene_id", 
+                              "external_gene_name", 
+                              "chromosome_name", 
+                              "start_position", 
+                              "end_position", 
+                              "strand", 
+                              "gene_biotype", 
+                              "description"),
+               mart = ensembl) %>% tibble::as_tibble()
+
+# Calculate gene length
+genes$gene_length <- abs(genes$end_position - genes$start_position)
+
+# Display the first few rows
+head(genes)
+
+
+
+# get protein coding genes
+
+genes_prot_coding <- genes %>% 
+  dplyr::filter(gene_biotype == "protein_coding")
+```
+
+## Count genes by gene_biotype
+
+```{r, fig.height=6, fig.width=5}
+genes %>% 
+  dplyr::group_by(gene_biotype) %>% 
+  dplyr::tally() %>% 
+  dplyr::mutate(gene_biotype = forcats::fct_reorder(gene_biotype, n)) %>%
+  ggplot2::ggplot(aes(x = gene_biotype, y = n)) + 
+  geom_bar(stat = "identity") + coord_flip()
+
+```
+
+# Step 2: Process Encode data 
+
+## Pre-process encode count files to create a single matrix
+
+```{r}
+
+# get available files in to a single vector 
+count_files <- fs::dir_ls("data/01_ENCODE_K562_RNA_Seq/",regexp = "*.tsv")
+
+# assign names 
+names(count_files) <- fs::path_file(count_files) %>% stringr::str_remove(".tsv")
+
+# read files and 
+counts <- purrr::map(count_files, ~ ..1 %>%
+                       readr::read_delim(delim = "\t") %>% 
+                       dplyr::select("gene_id","expected_count")) %>% 
+  tibble::enframe()
+
+# convert it into wide format
+counts %<>% 
+  tidyr::unnest() %>% 
+  tidyr::pivot_wider(id_cols = c("gene_id"),names_from = "name",values_from = "expected_count")  
+
+# remove all zero
+
+counts_no_zero <- counts %>% 
+  TidyWrappers::tbl_remove_rows_zero_all()
+
+# remove annotation version from the gene_id 
+
+counts_no_zero <- counts_no_zero  %>% 
+  dplyr::mutate(gene_id = stringr::str_remove(gene_id,"\\..*"))
+
+
+
+```
+
+## Process AGO KO count matrix 
+
+```{r}
+ago_count_matrix <- readr::read_delim("data/02_AGO_KO_RNAseq/AGO_KO_nuc_RNAseq_feature_count.txt",delim = "\t")
+
+sample_info <- tibble::tribble(
+           ~samples,  ~groups,
+  "SRR13067846",   "ago2",
+  "SRR13067847",   "ago2",
+  "SRR13067848",   "ago2",
+  "SRR13067855",     "wt",
+  "SRR13067856",     "wt",
+  "SRR13067857",     "wt"
+  )
+
+
+ago_count_matrix_select <- ago_count_matrix %>% dplyr::select(1,sample_info$samples) %>% 
+  dplyr::rename(A2_KO_1 = SRR13067846,A2_KO_2 = SRR13067847,A2_KO_3 = SRR13067848,
+                WT_1 = SRR13067855,WT_2 = SRR13067856,WT_3 = SRR13067857) %>%
+  TidyWrappers::tbl_remove_rows_zero_all()
+
+
+
+ago_count_matrix_prot <- ago_count_matrix_select %>% dplyr::filter(gene_id %in% genes_prot_coding$ensembl_gene_id)
+
+ago_count_matrix_prot %>%readr::write_delim("ago2_ko_counts.txt", delim = "\t")
+```
+
+## 

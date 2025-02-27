@@ -1,0 +1,180 @@
+---
+title: "Crash Course: tibble and dplyr in R"
+author: "Chirag Parsania"
+date: "`r Sys.Date()`"
+format: html
+editor: visual
+---
+
+# 🚀 Crash Course: `tibble` and `dplyr` for Data Manipulation in R
+
+## 📌 Introduction
+
+`tibble` is a package from the **tidyverse** that provides an improved version of base R data frames, making them more user-friendly and efficient.
+
+`dplyr` is another package from the **tidyverse** that provides a **grammar of data manipulation**, making data wrangling **fast, readable, and efficient**.
+
+Before diving into `dplyr`, let's first introduce `tibble`.
+
+## 🔹 Install and Load Packages
+
+```{r}
+# Install if not already installed
+if (!requireNamespace("tidyverse", quietly = TRUE)) install.packages("tidyverse")
+
+# Load the required packages
+library(tibble)
+library(dplyr)
+```
+
+------------------------------------------------------------------------
+
+# 🔥 `tibble` Crash Course
+
+## 🔹 What is `tibble`?
+
+`tibble` is a modern alternative to base R **data frames**, designed to be more efficient and user-friendly.
+
+### 📌 Creating a `tibble`
+
+```{r}
+data <- tibble(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 35),
+  Score = c(90, 85, 88)
+)
+print(data)
+```
+
+### 📌 Key Features of `tibble`
+
+-   **Prevents accidental coercion** (unlike base R data frames).
+-   **Prints in a compact, readable format**.
+-   **Supports lazy evaluation and list-columns**.
+
+### 🔹 Converting Data Frames to Tibbles
+
+If you already have a data frame, you can convert it into a tibble:
+
+```{r}
+mtcars_tbl <- as_tibble(mtcars)
+print(mtcars_tbl)
+```
+
+### 🔹 Accessing Data in `tibble`
+
+`tibble` behaves similarly to data frames, but with some enhancements:
+
+```{r}
+data$Age  # Access column
+```
+
+Unlike data frames, `tibble` does not automatically convert row names to a column.
+
+### 🔹 Adding and Modifying Columns
+
+```{r}
+data <- data %>% mutate(Age_Doubled = Age * 2)
+print(data)
+```
+
+### 🔹 Subsetting and Filtering Data
+
+You can subset rows using `filter()` from `dplyr`:
+
+```{r}
+data %>% filter(Age > 25)
+```
+
+### 🔹 Extracting Specific Columns
+
+Use `select()` to retrieve columns:
+
+```{r}
+data %>% select(Name, Score)
+```
+
+------------------------------------------------------------------------
+
+# 🔥 `dplyr` Crash Course
+
+Now that we understand `tibble`, let's explore how `dplyr` makes data manipulation easy.
+
+## 🔹 Key `dplyr` Functions
+
+These functions work with **tibbles and data frames** and support **piping (`%>%`)** for readability.
+
+### 1️⃣ `filter()` – Select Rows Based on Conditions
+
+```{r}
+data %>% filter(Age > 25)  # Select rows where Age > 25
+```
+
+### 2️⃣ `select()` – Choose Specific Columns
+
+```{r}
+data %>% select(Name, Score)  # Select Name and Score columns
+```
+
+### 3️⃣ `mutate()` – Create or Modify Columns
+
+```{r}
+data %>% mutate(Age_Doubled = Age * 2)  # Create a new column
+```
+
+### 4️⃣ `arrange()` – Sort Rows
+
+```{r}
+data %>% arrange(desc(Score))  # Sort by Score in descending order
+```
+
+### 5️⃣ `summarise()` + `group_by()` – Summarize Data
+
+```{r}
+data %>% summarise(Average_Score = mean(Score))  # Compute summary stats
+```
+
+------------------------------------------------------------------------
+
+## 🔥 Bonus: Join Functions (For Merging Data)
+
+```{r}
+df1 <- tibble(ID = c(1, 2, 3), Value = c("A", "B", "C"))
+df2 <- tibble(ID = c(2, 3, 4), Score = c(10, 20, 30))
+
+left_join(df1, df2, by = "ID")  # Keep all rows from df1, match from df2
+```
+
+------------------------------------------------------------------------
+
+## 🔹 Brief Overview of Other Tidyverse Packages
+
+### `purrr` – Functional Programming for Data
+
+-   `map()`, `map_df()`, `map_chr()`, etc., for applying functions across lists/vectors.
+
+```{r}
+library(purrr)
+numbers <- list(1, 2, 3, 4)
+map(numbers, sqrt)  # Apply sqrt function to each element
+```
+
+### `tidyr` – Data Tidying Made Easy
+
+-   `pivot_longer()`, `pivot_wider()` for reshaping data.
+-   `separate()` and `unite()` for splitting/combining columns.
+
+```{r}
+library(tidyr)
+data <- tibble(name = c("John Doe", "Jane Smith"))
+data %>% separate(name, into = c("first", "last"), sep = " ")
+```
+
+------------------------------------------------------------------------
+
+## 🎉 Conclusion
+
+-   **`tibble` makes data frames easier to work with.**
+-   **`dplyr` is fast, readable, and efficient!**
+-   **Use pipes (`%>%`) to create readable workflows.**
+-   **Mastering these functions will cover 90% of your data wrangling needs!**

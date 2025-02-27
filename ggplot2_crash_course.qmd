@@ -1,0 +1,172 @@
+---
+title: "🌟 ggplot Crash Course 📊"
+author: "Chirag Parsania"
+date: Sys.Date()
+format: html
+---
+
+# 🔥 Introduction
+
+### ✅ Key Features of ggplot2
+
+1️⃣ **Grammar of Graphics**: A structured approach to building visualizations using layer.
+
+2️⃣ **Aesthetic Mappings**: Define how data variables are mapped to visual properties.
+
+3️⃣ **Geometries**: Different plot types (bars, lines, points) to represent data effectively.
+
+**ggplot2** is a powerful and flexible package in R for data visualization. It is based on the **grammar of graphics** and provides a systematic way to create complex plots with minimal code. This crash course covers the basics of ggplot2, including color usage with the **colorspace** package. 🚀
+
+If you're new to data visualization in R, **ggplot2** is the best place to start! With its intuitive syntax, it allows you to create stunning and customizable plots effortlessly. This tutorial is designed for **first-time learners** and will walk you through the fundamental concepts step by step. By the end, you'll be comfortable creating a variety of plots with beautiful color palettes. 🎨📊
+
+# 🔧 Installation and Setup
+
+To get started, install **ggplot2** and **colorspace** if you haven’t already:
+
+```{r}
+install.packages("ggplot2")
+install.packages("colorspace")
+```
+
+Then load the necessary packages:
+
+```{r}
+library(ggplot2)
+library(colorspace)
+```
+
+# 📊 Creating a Sample Data Frame
+
+We'll create a simple dataset for visualization:
+
+```{r}
+data <- tibble::tibble(
+  category = rep(c("A", "B", "C", "D"), each = 10),
+  value = rnorm(40, mean = 50, sd = 10),
+  time = rep(1:10, times = 4)
+)
+
+data
+```
+
+# 🏗️ Basic ggplot Structure
+
+A basic **ggplot** consists of: ✅ `ggplot(data, aes(x, y))` - Define the data and aesthetics ✅ A `geom_*()` function - Specify the plot type ✅ Additional customization layers
+
+------------------------------------------------------------------------
+
+## 📉 Bar Plot 📦
+
+```{r}
+ggplot(data, aes(x = category, fill = category)) +
+  geom_bar() +
+  scale_fill_discrete_divergingx() +
+  theme_classic()
+```
+
+## 🎯 Scatter Plot 🔵
+
+```{r}
+ggplot(data, aes(x = value, y = time, color = value)) +
+  geom_point(size = 4) +
+  scale_color_continuous_sequential(palette = "Inferno") +
+  theme_light()
+```
+
+## 📈 Line Plot 📌
+
+```{r}
+ggplot(data, aes(x = time, y = value, group = category, color = category)) +
+  geom_line(size = 1.2) +
+  scale_color_discrete_diverging(palette = "Blue-Red 3") +
+  theme_minimal()
+```
+
+## 📦 Box Plot 🎁
+
+```{r}
+ggplot(data, aes(x = category, y = value, fill = category)) +
+  geom_boxplot() +
+  scale_fill_discrete_sequential(palette = "Plasma") +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+# 🏷️ Customizing Titles and Labels 🏷️
+
+Adding titles, subtitles, captions, and axis labels enhances the clarity of your plots. 🎯
+
+### 📝 Adding Titles & Labels
+
+```{r}
+ggplot(data, aes(x = category, y = value, fill = category)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Category-wise Value Distribution",
+       subtitle = "A bar plot with custom colors",
+       x = "Category",
+       y = "Value",
+       caption = "Source: Simulated Data") +
+  theme_minimal()
+```
+
+### 🎨 Customizing Theme & Labels
+
+```{r}
+ggplot(data, aes(x = value, y = time, color = category)) +
+  geom_point(size = 4) +
+  labs(title = "Scatter Plot of Value vs. Time",
+       x = "Value",
+       y = "Time",
+       color = "Category") +
+  theme_light()
+```
+
+------------------------------------------------------------------------
+
+# 🎨 Customizing Colors 🎨
+
+## 🎨 Using `scale_fill_manual()` 🎨
+
+✅ Define custom colors for bars:
+
+```{r}
+ggplot(data, aes(x = category, y = value, fill = category)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("A" = "#1b9e77", "B" = "#d95f02", "C" = "#7570b3", "D" = "#e7298a")) +
+  theme_minimal()
+```
+
+## 🎨 Using `scale_color_manual()` 🎨
+
+✅ Define custom colors for points:
+
+```{r}
+ggplot(data, aes(x = value, y = time, color = category)) +
+  geom_point(size = 4) +
+  scale_color_manual(values = c("A" = "#e41a1c", "B" = "#377eb8", "C" = "#4daf4a", "D" = "#984ea3")) +
+  theme_light()
+```
+
+## 🌈 Using Colors from `colorspace` 🌈
+
+✅ Apply beautiful color palettes with **colorspace**:
+
+```{r}
+ggplot(data, aes(x = category, fill = category)) +
+  geom_bar() +
+  scale_fill_discrete_sequential(palette = "SunsetDark") +
+  theme_classic()
+```
+
+------------------------------------------------------------------------
+
+# 🎯 Wrapping Up 🎯
+
+This crash course introduced you to some core **ggplot2** functions and enhancements with **colorspace**:
+
+✔️ **geom_bar()** - Create bar plots 📊 ✔️ **geom_point()** - Create scatter plots 🔵 ✔️ **geom_line()** - Create line plots 📈 ✔️ **geom_boxplot()** - Create box plots 🎁 ✔️ **labs()** - Customize titles and labels 🏷️ ✔️ **scale_color_discrete_diverging()** - Apply diverging color scales 🌈 ✔️ **scale_fill_continuous_sequential()** - Use sequential color scales 🎨 ✔️ **scale_fill_manual() & scale_color_manual()** - Define custom color mappings 🎯
+
+For more details and advanced topics, check out the [ggplot2 documentation](https://ggplot2.tidyverse.org) and [colorspace documentation](https://colorspace.r-forge.r-project.org/).
+
+🚀 Happy plotting with **ggplot2**! 🎨📊

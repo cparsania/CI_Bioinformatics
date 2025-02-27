@@ -1,0 +1,162 @@
+---
+title: "Differential Expression Analysis using DESeq2 (Tidyverse)"
+author: "Chirag Parsania"
+date: "`r Sys.Date()`"
+format: html
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(DESeq2)
+library(pheatmap)
+library(RColorBrewer)
+library(EnhancedVolcano)
+library(biomaRt)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+```
+
+
+## Load Data
+
+
+```{r}
+data <- read_tsv("ago2_ko_counts.txt") %>%
+  column_to_rownames(var = "gene_id")
+
+colData <- tibble(
+  sample = colnames(data),
+  condition = rep(c("A2KO", "WT"), each = 3)
+) %>% 
+  column_to_rownames(var = "sample")
+
+# Create DESeq2 dataset
+dds <- DESeqDataSetFromMatrix(countData = as.matrix(data), colData = colData, design = ~ condition)
+```
+
+
+## Pre-filtering and Running DESeq
+
+
+```{r}
+dds <- dds[rowSums(counts(dds)) > 10, ]
+dds <- DESeq(dds)
+res <- results(dds, contrast = c("condition", "A2KO", "WT")) %>% as_tibble(rownames = "gene_id")
+
+# Apply cutoffs
+resFilt <- res %>%
+  filter(padj < 0.01, abs(log2FoldChange) > 1)
+```
+
+
+## Convert Ensembl Gene IDs to Gene Symbols
+
+
+```{r}
+mart <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+gene_map <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol", "entrezgene_id"), 
+                   filters = "ensembl_gene_id", 
+                   values = resFilt$gene_id, 
+                   mart = mart) %>% as_tibble()
+
+resFilt <- resFilt %>%
+  left_join(gene_map, by = c("gene_id" = "ensembl_gene_id"))
+```
+
+
+## PCA Plot
+
+
+```{r}
+vsd <- vst(dds, blind = FALSE)
+pcaData <- plotPCA(vsd, intgroup = "condition", returnData = TRUE) %>%
+  as_tibble()
+
+ggplot(pcaData, aes(PC1, PC2, color = condition)) +
+  geom_point(size = 4) +
+  theme_minimal()
+```
+
+
+## Boxplot of Normalized Counts
+
+
+```{r}
+norm_counts <- counts(dds, normalized = TRUE) %>%
+  as_tibble(rownames = "gene_id") %>%
+  pivot_longer(-gene_id, names_to = "Sample", values_to = "Counts")
+
+ggplot(norm_counts, aes(x = Sample, y = log2(Counts + 1))) +
+  geom_boxplot() +
+  theme_minimal()
+```
+
+
+## Heatmap of Top 50 Differentially Expressed Genes
+
+
+```{r fig.height = 10, fig.width=5}
+selectGenes <- resFilt %>% arrange(padj) %>% slice_head(n = 50) %>% pull(gene_id)
+mat <- assay(vsd)[selectGenes, ]
+rownames(mat) <- resFilt$hgnc_symbol[match(rownames(mat), resFilt$gene_id)]
+pheatmap(mat, scale = "row", clustering_distance_rows = "correlation")
+```
+
+
+## Volcano Plot
+
+
+```{r fig.width=4, fig.height=5}
+EnhancedVolcano(resFilt, 
+                lab = resFilt$hgnc_symbol,
+                x = 'log2FoldChange',
+                y = 'padj',
+                title = 'Volcano Plot of Differential Expression')
+```
+
+
+## GO Enrichment Analysis for Upregulated and Downregulated Genes
+
+
+```{r}
+up_genes <- resFilt %>% filter(log2FoldChange > 1) %>% pull(entrezgene_id)
+down_genes <- resFilt %>% filter(log2FoldChange < -1) %>% pull(entrezgene_id)
+
+ego_up <- enrichGO(gene = up_genes, OrgDb = org.Hs.eg.db, keyType = "ENTREZID", ont = "BP", readable = TRUE)
+ego_down <- enrichGO(gene = down_genes, OrgDb = org.Hs.eg.db, keyType = "ENTREZID", ont = "BP", readable = TRUE)
+
+barplot(ego_up, showCategory = 15, title = "GO Enrichment for Upregulated Genes")
+barplot(ego_down, showCategory = 15, title = "GO Enrichment for Downregulated Genes")
+```
+
+
+## GSEA Analysis
+
+
+```{r fig.height=5, fig.width=4}
+gene_list <- res %>%
+  drop_na(padj) %>%
+  arrange(desc(log2FoldChange)) %>%
+  pull(log2FoldChange, name = gene_id)
+
+gsea_result <- gseGO(geneList = gene_list, 
+                      OrgDb = org.Hs.eg.db, 
+                      keyType = "ENSEMBL", 
+                      ont = "BP", 
+                      minGSSize = 10, 
+                      maxGSSize = 500, 
+                      pvalueCutoff = 0.05, 
+                      verbose = FALSE)
+
+dotplot(gsea_result, showCategory = 15, title = "GSEA Enrichment Analysis")
+```
+
+
+## GSEA vizualisation 
+
+
+```{r}
+id=1
+enrichplot::gseaplot2(gsea_result[id], geneSetID = id, title = gsea_result$Desc[id])
+```
+
