@@ -26,6 +26,7 @@ colData <- tibble(
   sample = colnames(data),
   condition = rep(c("A2KO", "WT"), each = 3)
 ) %>% 
+  
   column_to_rownames(var = "sample")
 
 # Create DESeq2 dataset
