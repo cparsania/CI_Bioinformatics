@@ -139,7 +139,7 @@ gsea_result <- gseGO(geneList = gene_list,
 dotplot(gsea_result, showCategory = 15, title = "GSEA Enrichment Analysis")
 ```
 
-## GSEA vizualisation 
+## GSEA vizualisation
 
 ```{r fig.width=6, fig.height=5}
 

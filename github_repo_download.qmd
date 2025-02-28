@@ -6,39 +6,35 @@ format: html
 ---
 
 # Introduction
+
 This guide provides step-by-step instructions on how to download a GitHub repository and access its contents **without any programming knowledge**.
 
 # Step 1: Open the Repository
-1. Click on the link: [CI_Bioinformatics](https://github.com/cparsania/CI_Bioinformatics/)
-2. This will take you to the GitHub repository page.
 
+1.  Click on the link: [CI_Bioinformatics](https://github.com/cparsania/CI_Bioinformatics/)
+
+    ![github_repo_qr](github_repo_qr.png){width="294"}
+
+2.  This will take you to the GitHub repository page.
 
 # Step 2: Download the Repository as a ZIP File
-1. Click on the **green 'Code' button** (top right).
-2. Click on **'Download ZIP'**.
-3. The ZIP file will start downloading to your computer.
-4. Locate the downloaded ZIP file (usually in the **Downloads** folder).
-5. **Right-click** on the ZIP file and select **"Extract All"** (Windows) or **"Extract Here"** (Mac/Linux).
-6. A new folder named `CI_Bioinformatics` will appear with all the files inside.
 
-
+1.  Click on the **green 'Code' button** (top right).
+2.  Click on **'Download ZIP'**.
+3.  The ZIP file will start downloading to your computer.
+4.  Locate the downloaded ZIP file (usually in the **Downloads** folder).
+5.  **Right-click** on the ZIP file and select **"Extract All"** (Windows) or **"Extract Here"** (Mac/Linux).
+6.  A new folder named `CI_Bioinformatics` will appear with all the files inside.
 
 # Step 3: Open the Extracted Folder
-1. **Double-click** on the extracted `CI_Bioinformatics` folder to open it.
-2. Inside, you will see multiple files and subfolders.
 
-
+1.  **Double-click** on the extracted `CI_Bioinformatics` folder to open it.
+2.  Inside, you will see multiple files and subfolders.
 
 # Step 4: Open HTML Files in Your Browser
-Inside the folder, you will find three HTML files:
-- **dplyr_crash_course.html**
-- **ggplot2_crash_course.html**
-- **DESEQ2_crash_course.html**
 
-To view them:
-1. **Double-click** on `dplyr_crash_course.html`. This will open in your default web browser.
-2. After completing the **dplyr crash course**, open `ggplot2_crash_course.html`.
-3. Finally, open `DESEQ2_crash_course.html`.
+Inside the folder, you will find three HTML files: - **dplyr_crash_course.html** - **ggplot2_crash_course.html** - **DESEQ2_crash_course.html**
+
+To view them: 1. **Double-click** on `dplyr_crash_course.html`. This will open in your default web browser. 2. After completing the **dplyr crash course**, open `ggplot2_crash_course.html`. 3. Finally, open `DESEQ2_crash_course.html`.
 
 📝 **Follow the order of the files as listed above** for the best learning experience.
-
