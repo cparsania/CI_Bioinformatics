@@ -30,7 +30,9 @@ colData <- tibble(
   column_to_rownames(var = "sample")
 
 # Create DESeq2 dataset
-dds <- DESeqDataSetFromMatrix(countData = as.matrix(data), colData = colData, design = ~ condition)
+dds <- DESeqDataSetFromMatrix(countData = as.matrix(data), 
+                              colData = colData, 
+                              design = ~ condition)
 ```
 
 ## Pre-filtering and Running DESeq
@@ -38,7 +40,9 @@ dds <- DESeqDataSetFromMatrix(countData = as.matrix(data), colData = colData, de
 ```{r}
 dds <- dds[rowSums(counts(dds)) > 10, ]
 dds <- DESeq(dds)
-res <- results(dds, contrast = c("condition", "A2KO", "WT")) %>% as_tibble(rownames = "gene_id")
+res <- results(dds, 
+               contrast = c("condition", "A2KO", "WT")) %>% 
+  as_tibble(rownames = "gene_id")
 
 # Apply cutoffs
 resFilt <- res %>%

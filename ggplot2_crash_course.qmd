@@ -170,3 +170,9 @@ This crash course introduced you to some core **ggplot2** functions and enhancem
 For more details and advanced topics, check out the [ggplot2 documentation](https://ggplot2.tidyverse.org) and [colorspace documentation](https://colorspace.r-forge.r-project.org/).
 
 🚀 Happy plotting with **ggplot2**! 🎨📊
+
+## 🎉 References
+
+[https://sites.northwestern.edu/researchcomputing/2020/04/13/online-learning-resources-r-ggplot2](https://sites.northwestern.edu/researchcomputing/2020/04/13/online-learning-resources-r-ggplot2/?utm_source=chatgpt.com)
+
+[https://github.com/erikgahner/awesome-ggplot2](https://github.com/erikgahner/awesome-ggplot2?utm_source=chatgpt.com)

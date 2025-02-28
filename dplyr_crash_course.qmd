@@ -178,3 +178,13 @@ data %>% separate(name, into = c("first", "last"), sep = " ")
 -   **`dplyr` is fast, readable, and efficient!**
 -   **Use pipes (`%>%`) to create readable workflows.**
 -   **Mastering these functions will cover 90% of your data wrangling needs!**
+
+## 🎉 References
+
+-   R 4 Data science online book : <https://r4ds.hadley.nz>
+
+-   dplyr package website: <https://dplyr.tidyverse.org>
+
+-   Cheat Sheet <https://www.rstudio.com/wp-content%2Fuploads%2F2015%2F02%2Fdata-wrangling-cheatsheet.pdf%2F>
+
+-   TidyTuesday - a community project to explore some exciting data : <https://github.com/rfordatascience/tidytuesday>
