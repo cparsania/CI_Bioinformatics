@@ -1,0 +1,149 @@
+---
+title: "Introduction to RStudio: A Beginner's Guide"
+author: "Dr Chirag Parsania"
+date: "`r Sys.Date()`"
+format: html
+---
+
+# **Getting Started with RStudio**
+
+RStudio is a popular **Integrated Development Environment (IDE) for R**. This guide will help you understand the RStudio interface and its key components.
+
+## **1. RStudio Interface Overview**
+
+When you open RStudio, you'll see four main **panes**:
+
+-   **Source Pane** (Top Left) – Where you write and edit R scripts (.R, .qmd, etc.).
+-   **Console Pane** (Bottom Left) – Where you run R commands.
+-   **Environment/History Pane** (Top Right) – Displays variables and past commands.
+-   **Files/Plots/Packages/Help Pane** (Bottom Right) – Manages files, plots, packages, and documentation.
+
+![RStudio Interface](screenshots/rstudio_interface.png)
+
+------------------------------------------------------------------------
+
+## **2. Source Pane (Script Editor)**
+
+This is where you write and edit R scripts.
+
+### **Key Buttons:**
+
+-   **Run (`▶️` button)**: Runs the selected code.
+-   **Save (`💾` button)**: Saves your script.
+-   **Find (`🔍` icon)**: Searches within your script.
+
+![Source Pane](screenshots/rstudio_source_editor_pane.png)
+
+------------------------------------------------------------------------
+
+## **3. Console Pane**
+
+This is where R executes your commands.
+
+### **Key Buttons:**
+
+-   **`>` Prompt**: Type and execute commands here.
+-   **Up/Down Arrows**: Navigate through command history.
+-   **Clear Console (`Ctrl + L`)**: Clears the output.
+
+![Console Pane](screenshots/rstudio_console_pane.png)
+
+------------------------------------------------------------------------
+
+## **4. Environment & History Pane**
+
+This pane helps track your **variables and past commands**.
+
+### **Tabs:**
+
+-   **Environment**: Shows active variables.
+-   **History**: Displays previously executed commands.
+
+![Environment Pane](screenshots/rstudio_tab_pane.png)
+
+------------------------------------------------------------------------
+
+## **5. Files, Plots, Packages, Help Pane**
+
+This pane manages files, packages, and visual outputs.
+
+### **Tabs:**
+
+-   **Files**: Browse files in your working directory.
+-   **Plots**: Displays generated visualizations.
+-   **Packages**: Manage R packages.
+-   **Help**: View R documentation.
+
+![Files Pane](screenshots/rstudio_files_pane.png)
+
+------------------------------------------------------------------------
+
+## **6. Running Code in RStudio**
+
+To run a command in RStudio:
+
+1.  **Type code in the Console or Script Editor**.
+2.  **Press `Enter` (Console) or click `Run` (Script Editor)**.
+3.  **View results in the Console or Plots tab**.
+
+``` r
+# Example: Simple calculation
+2 + 2
+
+# Example: Creating a variable
+a <- 10
+print(a)
+```
+
+------------------------------------------------------------------------
+
+## **7. Installing and Using Packages**
+
+R packages extend functionality. You can install them using:
+
+``` r
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+-   Check installed packages in the **Packages tab**.
+-   Search package documentation in the **Help tab**.
+
+## **8. Customizing RStudio**
+
+You can personalize RStudio by going to **Tools \> Global Options**.
+
+### **Common Settings:**
+
+-   **Appearance**: Change theme (light/dark mode).
+-   **Code**: Adjust editor settings.
+-   **General**: Set working directory.
+
+------------------------------------------------------------------------
+
+## **9. Keyboard Shortcuts**
+
+Here are some useful shortcuts:
+
+-   **Run Code**: `Ctrl + Enter`
+-   **Save File**: `Ctrl + S`
+-   **Comment Code**: `Ctrl + Shift + C`
+-   **Clear Console**: `Ctrl + L`
+
+To view all shortcuts, press `Alt + Shift + K`.
+
+![](screenshots/rstudio_shortcuts.png)
+
+## 10. RStudio cheat sheet
+
+![](https://rstudio.github.io/cheatsheets/rstudio-ide.pdf){fig-align="center"}
+
+## **11. Summary**
+
+This guide introduced you to the **RStudio interface** and key buttons. As you practice, you'll become more comfortable navigating and using RStudio for data analysis.
+
+For more, check the **official RStudio documentation**: <https://posit.co>.
+
+------------------------------------------------------------------------
+
+Happy Coding! 🎉
