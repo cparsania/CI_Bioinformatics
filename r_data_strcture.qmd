@@ -1,0 +1,260 @@
+---
+title: "Introduction to Basic R Data Structures and Loops"
+author: "Chirag Parsania"
+date: "`r Sys.Date()`"
+format: html
+---
+
+```{r setup, include=FALSE, eval=TRUE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+```
+
+# **Introduction**
+
+R provides various **data structures** to store and manipulate data efficiently. In this guide, we will cover the basic data structures in R and explore **looping functions** such as `apply`, `sapply`, and `lapply`.
+
+------------------------------------------------------------------------
+
+## **1. Basic Data Structures in R**
+
+### **a) Vectors**
+
+A **vector** is the simplest data structure in R. It is a collection of elements of the same type. Vectors can be **numeric, character, or logical**. They are useful when dealing with **a series of values of the same kind**, such as numerical datasets or character lists.
+
+``` r
+# Numeric vector
+num_vec <- c(1, 2, 3, 4, 5)
+
+# Character vector
+char_vec <- c("apple", "banana", "cherry")
+
+# Logical vector
+log_vec <- c(TRUE, FALSE, TRUE)
+```
+
+**Accessing Elements of a Vector:**
+
+``` r
+num_vec[1]    # First element
+char_vec[2]   # Second element
+log_vec[3]    # Third element
+num_vec[2:4]  # Elements from index 2 to 4
+```
+
+**Key Features:**
+
+\- One-dimensional.
+
+\- Can store only one type of data.
+
+\- The most basic building block in R.
+
+------------------------------------------------------------------------
+
+### **b) Factors**
+
+A **factor** is a categorical data structure used to store discrete values, such as labels or groups. It is particularly useful in statistical modeling and visualization.
+
+``` r
+# Creating a factor variable
+gender <- factor(c("Male", "Female", "Female", "Male", "Male"))
+print(gender)
+```
+
+**Accessing Factor Levels:**
+
+``` r
+levels(gender)  # Returns unique categories
+table(gender)   # Counts occurrences of each category
+gender[3]       # Access the third element
+```
+
+**Key Features:**
+
+-   Stores categorical data efficiently.
+
+-   Levels represent unique categories.
+
+-   Useful in statistical modeling.
+
+**Accessing Factor Levels:**
+
+``` r
+levels(gender)  # Returns unique categories
+
+table(gender)   # Counts occurrences of each category
+```
+
+------------------------------------------------------------------------
+
+### **c) Matrices**
+
+A **matrix** is a two-dimensional data structure where all elements are of the same type. Matrices are useful when working with **numerical data arranged in rows and columns**, such as correlation tables or mathematical operations.
+
+``` r
+# Creating a 3x3 matrix
+mat <- matrix(1:9, nrow = 3, byrow = TRUE)
+print(mat)
+```
+
+**Accessing Rows and Columns:**
+
+``` r
+# Accessing a specific row
+mat[2, ]  # Returns second row
+
+# Accessing a specific column
+mat[, 3]  # Returns third column
+
+# Accessing a specific element
+mat[2, 3]  # Returns value at row 2, column 3
+```
+
+**Key Features:**
+
+-   Two-dimensional (rows and columns).
+
+-   Stores only one data type (numeric, character, or logical).
+
+-   Useful for mathematical computations.
+
+------------------------------------------------------------------------
+
+### **d) Lists**
+
+A **list** is a flexible data structure that can hold elements of **different types**, including vectors, matrices, and even other lists. It is useful for storing **heterogeneous data**, such as a mix of numbers, text, and tables.
+
+``` r
+# Creating a list
+my_list <- list(name = "John", age = 30, scores = c(90, 85, 88))
+print(my_list)
+```
+
+**Key Features:**
+
+-   Can store different data types.
+
+-   Can contain other data structures like vectors, matrices, and even lists.
+
+-   Elements are accessed using double square brackets (`[[ ]]`).
+
+**Pros and Cons of Lists:**
+
+| Pros | Cons |
+|------------------------------------|------------------------------------|
+| Can store multiple data types | More complex to manipulate compared to data frames |
+| Flexible and allows nesting | Not as efficient for tabular data |
+| Useful for returning multiple results in functions | Accessing elements requires `[[ ]]` notation |
+
+------------------------------------------------------------------------
+
+### **e) Data Frames**
+
+A **data frame** is a table-like structure where each column can contain different types of data. It is the most commonly used structure for handling **tabular data** in R, such as survey responses or experimental data.
+
+``` r
+# Creating a data frame
+df <- data.frame(Name = c("Alice", "Bob", "Charlie"), 
+                 Age = c(25, 30, 35), 
+                 Score = c(90, 85, 88))
+print(df)
+```
+
+**Accessing Rows and Columns:**
+
+``` r
+# Accessing a specific column
+df$Name  # Returns all names
+
+# Accessing a specific row
+df[2, ]  # Returns the second row
+
+# Accessing a specific element
+df[3, "Score"]  # Returns Score of the third row
+```
+
+**Key Features:**
+
+-   Two-dimensional (rows and columns).
+
+-   Each column can have a different data type.
+
+-   Similar to a spreadsheet or SQL table.
+
+-   Rows and columns are indexed for easy access.
+
+**Pros and Cons of Data Frames:**
+
+| Pros | Cons |
+|------------------------------------|------------------------------------|
+| Ideal for tabular data | Uses more memory compared to lists |
+| Easy to manipulate with built-in functions | Requires uniform column lengths |
+| Compatible with data analysis packages | Not suitable for storing complex objects |
+
+------------------------------------------------------------------------
+
+## **2. Looping in Base R**
+
+### **a) Using `apply()` for Matrices**
+
+The `apply()` function applies a function to **rows or columns of a matrix**.
+
+``` r
+# Sum of each row
+apply(mat, 1, sum)
+
+# Sum of each column
+apply(mat, 2, sum)
+```
+
+------------------------------------------------------------------------
+
+### **b) Using `lapply()` for Lists**
+
+The `lapply()` function applies a function to **each element of a list** and returns a list.
+
+``` r
+# Applying sqrt() to each numeric element in a list
+num_list <- list(a = 16, b = 25, c = 36)
+lapply(num_list, sqrt)
+```
+
+------------------------------------------------------------------------
+
+### **c) Using `sapply()` for Simpler Output**
+
+The `sapply()` function is similar to `lapply()` but tries to simplify the output.
+
+``` r
+sapply(num_list, sqrt)  # Returns a vector instead of a list
+```
+
+------------------------------------------------------------------------
+
+### **d) Using `tapply()` for Grouped Calculations**
+
+The `tapply()` function applies a function to **subsets of a vector** based on a factor.
+
+``` r
+# Creating a sample dataset
+scores <- c(85, 90, 78, 92, 88, 76)
+group <- factor(c("A", "A", "B", "B", "A", "B"))
+
+# Calculate mean score per group
+tapply(scores, group, mean)
+```
+
+------------------------------------------------------------------------
+
+## **3. Summary**
+
+-   **Vectors, Matrices, Factors, Lists, and Data Frames** are essential data structures in R.
+-   **Lists** can store different data types, while **data frames** are structured like tables.
+-   **Factors** are useful for handling categorical data.
+-   **Base R looping functions (`apply`, `sapply`, `lapply`, `tapply`)** help in data manipulation and analysis.
+
+For more details, refer to the **official R documentation**: <https://cran.r-project.org/manuals.html>
+
+------------------------------------------------------------------------
+
+Happy Coding! 🚀
