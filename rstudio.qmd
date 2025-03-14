@@ -86,7 +86,7 @@ To run a command in RStudio:
 2.  **Press `Enter` (Console) or click `Run` (Script Editor)**.
 3.  **View results in the Console or Plots tab**.
 
-``` r
+```{r}
 # Example: Simple calculation
 2 + 2
 
@@ -101,7 +101,8 @@ print(a)
 
 R packages extend functionality. You can install them using:
 
-``` r
+```{r}
+
 install.packages("ggplot2")
 library(ggplot2)
 ```

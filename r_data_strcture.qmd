@@ -21,20 +21,28 @@ R provides various **data structures** to store and manipulate data efficiently.
 
 A **vector** is the simplest data structure in R. It is a collection of elements of the same type. Vectors can be **numeric, character, or logical**. They are useful when dealing with **a series of values of the same kind**, such as numerical datasets or character lists.
 
-``` r
-# Numeric vector
+```{r}
+# Numeric vector 
+
 num_vec <- c(1, 2, 3, 4, 5)
+```
 
 # Character vector
+
+```{r}
 char_vec <- c("apple", "banana", "cherry")
+```
 
 # Logical vector
+
+```{r}
+
 log_vec <- c(TRUE, FALSE, TRUE)
 ```
 
 **Accessing Elements of a Vector:**
 
-``` r
+```{r}
 num_vec[1]    # First element
 char_vec[2]   # Second element
 log_vec[3]    # Third element
@@ -43,11 +51,15 @@ num_vec[2:4]  # Elements from index 2 to 4
 
 **Key Features:**
 
-\- One-dimensional.
+-   One-dimensional.
 
-\- Can store only one type of data.
+<!-- -->
 
-\- The most basic building block in R.
+-   Can store only one type of data.
+
+<!-- -->
+
+-   The most basic building block in R.
 
 ------------------------------------------------------------------------
 
@@ -55,7 +67,7 @@ num_vec[2:4]  # Elements from index 2 to 4
 
 A **factor** is a categorical data structure used to store discrete values, such as labels or groups. It is particularly useful in statistical modeling and visualization.
 
-``` r
+```{r}
 # Creating a factor variable
 gender <- factor(c("Male", "Female", "Female", "Male", "Male"))
 print(gender)
@@ -63,7 +75,7 @@ print(gender)
 
 **Accessing Factor Levels:**
 
-``` r
+```{r}
 levels(gender)  # Returns unique categories
 table(gender)   # Counts occurrences of each category
 gender[3]       # Access the third element
@@ -79,10 +91,12 @@ gender[3]       # Access the third element
 
 **Accessing Factor Levels:**
 
-``` r
+```{r}
+
 levels(gender)  # Returns unique categories
 
 table(gender)   # Counts occurrences of each category
+
 ```
 
 ------------------------------------------------------------------------
@@ -91,7 +105,7 @@ table(gender)   # Counts occurrences of each category
 
 A **matrix** is a two-dimensional data structure where all elements are of the same type. Matrices are useful when working with **numerical data arranged in rows and columns**, such as correlation tables or mathematical operations.
 
-``` r
+```{r}
 # Creating a 3x3 matrix
 mat <- matrix(1:9, nrow = 3, byrow = TRUE)
 print(mat)
@@ -99,7 +113,8 @@ print(mat)
 
 **Accessing Rows and Columns:**
 
-``` r
+```{r}
+
 # Accessing a specific row
 mat[2, ]  # Returns second row
 
@@ -108,6 +123,8 @@ mat[, 3]  # Returns third column
 
 # Accessing a specific element
 mat[2, 3]  # Returns value at row 2, column 3
+
+
 ```
 
 **Key Features:**
@@ -124,7 +141,7 @@ mat[2, 3]  # Returns value at row 2, column 3
 
 A **list** is a flexible data structure that can hold elements of **different types**, including vectors, matrices, and even other lists. It is useful for storing **heterogeneous data**, such as a mix of numbers, text, and tables.
 
-``` r
+```{r}
 # Creating a list
 my_list <- list(name = "John", age = 30, scores = c(90, 85, 88))
 print(my_list)
@@ -152,7 +169,8 @@ print(my_list)
 
 A **data frame** is a table-like structure where each column can contain different types of data. It is the most commonly used structure for handling **tabular data** in R, such as survey responses or experimental data.
 
-``` r
+```{r}
+
 # Creating a data frame
 df <- data.frame(Name = c("Alice", "Bob", "Charlie"), 
                  Age = c(25, 30, 35), 
@@ -162,7 +180,8 @@ print(df)
 
 **Accessing Rows and Columns:**
 
-``` r
+```{r}
+
 # Accessing a specific column
 df$Name  # Returns all names
 
@@ -199,7 +218,8 @@ df[3, "Score"]  # Returns Score of the third row
 
 The `apply()` function applies a function to **rows or columns of a matrix**.
 
-``` r
+```{r}
+
 # Sum of each row
 apply(mat, 1, sum)
 
@@ -213,7 +233,7 @@ apply(mat, 2, sum)
 
 The `lapply()` function applies a function to **each element of a list** and returns a list.
 
-``` r
+```{r}
 # Applying sqrt() to each numeric element in a list
 num_list <- list(a = 16, b = 25, c = 36)
 lapply(num_list, sqrt)
@@ -225,7 +245,8 @@ lapply(num_list, sqrt)
 
 The `sapply()` function is similar to `lapply()` but tries to simplify the output.
 
-``` r
+```{r}
+
 sapply(num_list, sqrt)  # Returns a vector instead of a list
 ```
 
@@ -235,7 +256,7 @@ sapply(num_list, sqrt)  # Returns a vector instead of a list
 
 The `tapply()` function applies a function to **subsets of a vector** based on a factor.
 
-``` r
+```{r}
 # Creating a sample dataset
 scores <- c(85, 90, 78, 92, 88, 76)
 group <- factor(c("A", "A", "B", "B", "A", "B"))
