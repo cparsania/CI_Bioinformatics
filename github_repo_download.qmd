@@ -31,10 +31,14 @@ This guide provides step-by-step instructions on how to download a GitHub reposi
 1.  **Double-click** on the extracted `CI_Bioinformatics` folder to open it.
 2.  Inside, you will see multiple files and subfolders.
 
-# Step 4: Open HTML Files in Your Browser
+# Step 4: Open R project into the RStudio
 
-Inside the folder, you will find three HTML files: - **dplyr_crash_course.html** - **ggplot2_crash_course.html** - **DESEQ2_crash_course.html**
+Inside the `CI_Bioinformatics` directory you will the R studio project file - `00_Bioinforamtics_club.Rproj` . Double click this file to open the project in the locally installed R studio.
 
-To view them: 1. **Double-click** on `dplyr_crash_course.html`. This will open in your default web browser. 2. After completing the **dplyr crash course**, open `ggplot2_crash_course.html`. 3. Finally, open `DESEQ2_crash_course.html`.
+# Step 4: Open .qmd Files in rstudio
+
+Inside the folder, you will find three .qmd files: -
+
+To view them: 1. **Double-click** on `rstudio.qmd`. This will open it in R studio source pan. 2. After completing the **rstudio**, open `r_data_strcture.qmd`.
 
 📝 **Follow the order of the files as listed above** for the best learning experience.
