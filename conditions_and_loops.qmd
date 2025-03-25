@@ -1,0 +1,119 @@
+---
+title: "✨ Loops and Conditionals in R 💻"
+format: html
+editor: visual
+autho: Dr Chirag Parsania
+---
+
+# 🚀 Introduction
+
+In this tutorial, we'll explore how to use `for` loops and `if` statements in R. These are essential tools for controlling the flow of your code.
+
+------------------------------------------------------------------------
+
+# 🔁 1. `for` Loops with Vectors
+
+A `for` loop allows you to repeat a block of code for each element in a sequence.
+
+## 🧪 Example: Loop over a vector
+
+```{r}
+# Define a vector of numbers
+numbers <- c(1, 2, 3, 4, 5)
+
+# Loop through each number and print it
+for (n in numbers) {
+  print(n)
+}
+```
+
+------------------------------------------------------------------------
+
+# 🧠 2. `if` Statements with Vectors
+
+The `if` statement is used to perform conditional execution.
+
+## 🔍 Example: Check for even or odd
+
+```{r}
+for (n in numbers) {
+  if (n %% 2 == 0) {
+    print(paste(n, "is even ✅"))
+  } else {
+    print(paste(n, "is odd 🔹"))
+  }
+}
+```
+
+------------------------------------------------------------------------
+
+# 🗃️ 3. Looping Over Data Frames
+
+You can loop through rows or columns of a data frame.
+
+## 📋 Example: Loop through rows
+
+```{r}
+# Sample data frame
+df <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 17)
+)
+
+# Loop through each row and check if the person is an adult
+for (i in 1:nrow(df)) {
+  if (df$age[i] >= 18) {
+    print(paste(df$name[i], "is an adult 👨‍💼"))
+  } else {
+    print(paste(df$name[i], "is a minor 🧒"))
+  }
+}
+```
+
+------------------------------------------------------------------------
+
+# 🧺 4. Looping Over Lists
+
+Lists are very flexible and can contain different types of elements.
+
+## 📦 Example: Loop through a list
+
+```{r}
+# Define a list
+my_list <- list(
+  vec = c(1, 2, 3),
+  df = data.frame(a = 1:2, b = 3:4),
+  msg = "Hello"
+)
+
+# Loop and print type of each element
+for (item in my_list) {
+  print(class(item))
+}
+```
+
+## 🧮 `if` with Lists
+
+```{r}
+for (item in my_list) {
+  if (is.data.frame(item)) {
+    print("📊 This is a data frame")
+  } else if (is.vector(item)) {
+    print("📈 This is a vector")
+  } else {
+    print("🔧 Other type")
+  }
+}
+```
+
+------------------------------------------------------------------------
+
+# 📝 Summary
+
+✅ Use `for` loops to iterate over vectors, data frames, or lists.\
+✅ Use `if`, `else if`, and `else` for conditional logic.\
+✅ Combine them for powerful control over your data workflows!
+
+------------------------------------------------------------------------
+
+Happy coding! ✨🧬💻

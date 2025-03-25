@@ -1,0 +1,35 @@
+---
+title: "CI Bioinformatics Workshop"
+format: html
+page-layout: full
+editor: visual
+---
+
+# 🧬 CI Bioinformatics Crash Course Hub
+
+Welcome to the CI Bioinformatics Workshop Series! Click on any module below to get started:
+
+## 📚 Modules
+
+-   [💻 Getting Started with RStudio](rstudio.html)
+-   [📦 R Data Structures](r_data_strcture.html)
+-   [🔁 Conditions & Loops](conditions_and_loops.html)
+-   [📊 dplyr Crash Course](dplyr_crash_course.html)
+-   [🧬 DESeq2 Crash Course](DESEQ2_crash_course.html)
+-   [🎨 ggplot2 Crash Course](ggplot2_crash_course.html)
+
+------------------------------------------------------------------------
+
+## 🌐 Repository
+
+🔗 [GitHub: cparsania/CI_Bioinformatics](https://github.com/cparsania/CI_Bioinformatics)
+
+------------------------------------------------------------------------
+
+## 🚀 How to Use
+
+You can view any of the above HTML tutorials directly in your browser. This site is powered by **Quarto + GitHub Pages**.
+
+------------------------------------------------------------------------
+
+Happy Learning! 🧠💻🧪
