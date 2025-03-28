@@ -203,7 +203,7 @@ print(my_list)
 **Pros and Cons of Lists:**
 
 | Pros | Cons |
-|------------------------------------|------------------------------------|
+|----|----|
 | Can store multiple data types | More complex to manipulate compared to data frames |
 | Flexible and allows nesting | Not as efficient for tabular data |
 | Useful for returning multiple results in functions | Accessing elements requires `[[ ]]` notation |
@@ -250,7 +250,7 @@ df[3, "Score"]  # Returns Score of the third row
 **Pros and Cons of Data Frames:**
 
 | Pros | Cons |
-|------------------------------------|------------------------------------|
+|----|----|
 | Ideal for tabular data | Uses more memory compared to lists |
 | Easy to manipulate with built-in functions | Requires uniform column lengths |
 | Compatible with data analysis packages | Not suitable for storing complex objects |
