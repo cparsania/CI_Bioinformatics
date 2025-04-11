@@ -130,13 +130,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<section id="what-youll-practice" class="level1">
+<h1>📚 What You’ll Practice</h1>
+<ol type="1">
+<li><a href="#mean-calculate-the-mean">🔢 1. mean(): Calculate the Mean</a></li>
+<li><a href="#median-calculate-the-median">📊 2. median(): Calculate the Median</a></li>
+<li><a href="#mode-get-the-mode-most-frequent-value">🔀 3. mode(): Get the Mode (most frequent value)</a></li>
+<li><a href="#sample-sample-random-elements">🎲 4. sample(): Sample Random Elements</a></li>
+<li><a href="#sort-sort-data-in-ascending-or-descending-order">🏆 5. sort(): Sort Data in Ascending or Descending Order</a></li>
+<li><a href="#order-get-order-of-elements">↕️ 6. order(): Get Order of Elements</a></li>
+<li><a href="#unique-get-unique-values">🔎 7. unique(): Get Unique Values</a></li>
+<li><a href="#rev-reverse-a-vector">♻️ 8. rev(): Reverse a Vector</a></li>
+<li><a href="#rep-repeat-elements">🔄 9. rep(): Repeat Elements</a></li>
+<li><a href="#summary-get-summary-statistics">📊 10. summary(): Get Summary Statistics</a></li>
+<li><a href="#seq-generate-sequences">📅 11. seq(): Generate Sequences</a></li>
+<li><a href="#str-structure-of-object">📁 12. str(): Structure of Object</a></li>
+<li><a href="#head-and-tail-peek-at-data">📈 13. head() and tail(): Peek at Data</a></li>
+<li><a href="#table-frequency-table">📊 14. table(): Frequency Table</a></li>
+<li><a href="#paste-and-paste0-concatenate-strings">➕ 15. paste() and paste0(): Concatenate Strings</a></li>
+<li><a href="#cut-divide-numeric-data-into-groups">16. cut() Divide Numeric Data into Groups</a></li>
+<li><a href="#round-floor-ceiling-rounding-functions">17. round(), floor(), ceiling(): Rounding Functions</a></li>
+<li><a href="#which-get-index-of-matching-condition">📐 18. which(): Get Index of Matching Condition</a></li>
+<li><a href="#any-and-all-logical-check-functions">💯 19. any() and all(): Logical Check Functions</a></li>
+<li><a href="#is.na-check-for-missing-values">🧪 20. is.na(): Check for Missing Values</a></li>
+<li><a href="#na.omit-remove-missing-values">📉 21. na.omit(): Remove Missing Values</a></li>
+<li><a href="#length-number-of-elements">🧬 22. length(): Number of Elements</a></li>
+<li><a href="#dim-dimensions-of-matrix-or-data-frame">🧩 23. dim(): Dimensions of Matrix or Data Frame</a></li>
+<li><a href="#names-access-or-set-names-of-elements">24. names(): Access or Set Names of Elements</a></li>
+<li><a href="#append-add-elements-to-a-vector">📦 25. append(): Add Elements to a Vector</a></li>
+</ol>
+</section>
 <section id="introduction" class="level1">
 <h1>🧠 Introduction</h1>
 <p>In this tutorial, we will explore some of the most commonly used and cool <strong>inbuilt R functions</strong>. These functions are great for performing simple tasks like calculating averages, sorting data, or even working with sample data. Let’s dive in!</p>
 <hr>
 </section>
 <section id="mean-calculate-the-mean" class="level1">
-<h1>🔢 1. <code>mean()</code>: Calculate the Mean</h1>
+<h1>🔢 1. mean(): Calculate the Mean</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of a numeric vector</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
@@ -149,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="median-calculate-the-median" class="level1">
-<h1>📊 2. <code>median()</code>: Calculate the Median</h1>
+<h1>📊 2. median(): Calculate the Median</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median of a numeric vector</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>median_value <span class="ot">&lt;-</span> <span class="fu">median</span>(numbers)</span>
@@ -161,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="mode-get-the-mode-most-frequent-value" class="level1">
-<h1>🔀 3. <code>mode()</code>: Get the Mode (most frequent value)</h1>
+<h1>🔀 3. mode(): Get the Mode (most frequent value)</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mode of a numeric vector (R doesn't have a built-in mode function, so we use a custom one)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>getmode <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
@@ -178,19 +208,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="sample-sample-random-elements" class="level1">
-<h1>🎲 4. <code>sample()</code>: Sample Random Elements</h1>
+<h1>🎲 4. sample(): Sample Random Elements</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample 3 random elements from a vector</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>random_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(numbers, <span class="dv">3</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>random_sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 4 1</code></pre>
+<pre><code>[1] 4 7 1</code></pre>
 </div>
 </div>
 <hr>
 </section>
 <section id="sort-sort-data-in-ascending-or-descending-order" class="level1">
-<h1>🏆 5. <code>sort()</code>: Sort Data in Ascending or Descending Order</h1>
+<h1>🏆 5. sort(): Sort Data in Ascending or Descending Order</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the numbers in ascending order</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sorted_asc <span class="ot">&lt;-</span> <span class="fu">sort</span>(numbers)</span>
@@ -208,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="order-get-order-of-elements" class="level1">
-<h1>↕️ 6. <code>order()</code>: Get Order of Elements</h1>
+<h1>↕️ 6. order(): Get Order of Elements</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the order of elements in a vector</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">40</span>, <span class="dv">30</span>)</span>
@@ -224,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="unique-get-unique-values" class="level1">
-<h1>🔎 7. <code>unique()</code>: Get Unique Values</h1>
+<h1>🔎 7. unique(): Get Unique Values</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique values from a vector</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>repeats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
@@ -236,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="rev-reverse-a-vector" class="level1">
-<h1>♻️ 8. <code>rev()</code>: Reverse a Vector</h1>
+<h1>♻️ 8. rev(): Reverse a Vector</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverse the elements of a vector</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -247,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="rep-repeat-elements" class="level1">
-<h1>🔄 9. <code>rep()</code>: Repeat Elements</h1>
+<h1>🔄 9. rep(): Repeat Elements</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat each element 3 times</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -263,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="summary-get-summary-statistics" class="level1">
-<h1>📊 10. <code>summary()</code>: Get Summary Statistics</h1>
+<h1>📊 10. summary(): Get Summary Statistics</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary statistics of a numeric vector</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -275,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="seq-generate-sequences" class="level1">
-<h1>📅 11. <code>seq()</code>: Generate Sequences</h1>
+<h1>📅 11. seq(): Generate Sequences</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a sequence from 1 to 10 by 2</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -286,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="str-structure-of-object" class="level1">
-<h1>📁 12. <code>str()</code>: Structure of Object</h1>
+<h1>📁 12. str(): Structure of Object</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the structure of a data frame</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>example_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"Tom"</span>, <span class="st">"Sara"</span>), <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">28</span>))</span>
@@ -300,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="head-and-tail-peek-at-data" class="level1">
-<h1>📈 13. <code>head()</code> and <code>tail()</code>: Peek at Data</h1>
+<h1>📈 13. head() and tail(): Peek at Data</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First few elements</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(numbers, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -316,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="table-frequency-table" class="level1">
-<h1>📊 14. <code>table()</code>: Frequency Table</h1>
+<h1>📊 14. table(): Frequency Table</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency table of values</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"cherry"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -329,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="paste-and-paste0-concatenate-strings" class="level1">
-<h1>➕ 15. <code>paste()</code> and <code>paste0()</code>: Concatenate Strings</h1>
+<h1>➕ 15. paste() and paste0(): Concatenate Strings</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste with separator</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Hello"</span>, <span class="st">"world"</span>, <span class="at">sep =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -345,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 <section id="cut-divide-numeric-data-into-groups" class="level1">
-<h1>⚖️ 16. <code>cut()</code>: Divide Numeric Data into Groups</h1>
+<h1>16. cut() Divide Numeric Data into Groups</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide values into 3 groups</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>)</span>
@@ -358,7 +388,7 @@ Levels: (0.981,7.33] (7.33,13.7] (13.7,20]</code></pre>
 <hr>
 </section>
 <section id="round-floor-ceiling-rounding-functions" class="level1">
-<h1>🏛️ 17. <code>round()</code>, <code>floor()</code>, <code>ceiling()</code>: Rounding Functions</h1>
+<h1>17. round(), floor(), ceiling(): Rounding Functions</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>val <span class="ot">&lt;-</span> <span class="fl">3.75</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(val)    <span class="co"># Round to nearest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -377,7 +407,7 @@ Levels: (0.981,7.33] (7.33,13.7] (13.7,20]</code></pre>
 <hr>
 </section>
 <section id="which-get-index-of-matching-condition" class="level1">
-<h1>📐 18. <code>which()</code>: Get Index of Matching Condition</h1>
+<h1>📐 18. which(): Get Index of Matching Condition</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Index of elements &gt; 5</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(numbers <span class="sc">&gt;</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -388,7 +418,7 @@ Levels: (0.981,7.33] (7.33,13.7] (13.7,20]</code></pre>
 <hr>
 </section>
 <section id="any-and-all-logical-check-functions" class="level1">
-<h1>💯 19. <code>any()</code> and <code>all()</code>: Logical Check Functions</h1>
+<h1>💯 19. any() and all(): Logical Check Functions</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if any or all elements match a condition</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(numbers <span class="sc">&gt;</span> <span class="dv">5</span>)  <span class="co"># TRUE if any value is &gt; 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -403,7 +433,7 @@ Levels: (0.981,7.33] (7.33,13.7] (13.7,20]</code></pre>
 <hr>
 </section>
 <section id="is.na-check-for-missing-values" class="level1">
-<h1>🧪 20. <code>is.na()</code>: Check for Missing Values</h1>
+<h1>🧪 20. is.na(): Check for Missing Values</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(data)       <span class="co"># Logical vector indicating NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -418,7 +448,7 @@ Levels: (0.981,7.33] (7.33,13.7] (13.7,20]</code></pre>
 <hr>
 </section>
 <section id="na.omit-remove-missing-values" class="level1">
-<h1>📉 21. <code>na.omit()</code>: Remove Missing Values</h1>
+<h1>📉 21. na.omit(): Remove Missing Values</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values from a vector</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>data_no_na <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data)</span>
@@ -434,7 +464,7 @@ attr(,"class")
 <hr>
 </section>
 <section id="length-number-of-elements" class="level1">
-<h1>🧬 22. <code>length()</code>: Number of Elements</h1>
+<h1>🧬 22. length(): Number of Elements</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of elements in a vector</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -445,7 +475,7 @@ attr(,"class")
 <hr>
 </section>
 <section id="dim-dimensions-of-matrix-or-data-frame" class="level1">
-<h1>🧩 23. <code>dim()</code>: Dimensions of Matrix or Data Frame</h1>
+<h1>🧩 23. dim(): Dimensions of Matrix or Data Frame</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -456,7 +486,7 @@ attr(,"class")
 <hr>
 </section>
 <section id="names-access-or-set-names-of-elements" class="level1">
-<h1>🛠️ 24. <code>names()</code>: Access or Set Names of Elements</h1>
+<h1>24. names(): Access or Set Names of Elements</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>named_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(named_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -473,7 +503,7 @@ attr(,"class")
 <hr>
 </section>
 <section id="append-add-elements-to-a-vector" class="level1">
-<h1>📦 25. <code>append()</code>: Add Elements to a Vector</h1>
+<h1>📦 25. append(): Add Elements to a Vector</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">append</span>(vec, <span class="dv">4</span>)           <span class="co"># Add 4 at the end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
