@@ -1,6 +1,6 @@
 ---
 title: "Cool Inbuilt R Functions"
-author: "CI Bioinformatics Club"
+author: "Chirag Parsania - CI Bioinformatics Club"
 format: html
 editor: visual
 ---
