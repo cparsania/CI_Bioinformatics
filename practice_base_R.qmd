@@ -1,0 +1,142 @@
+---
+title: "Base R Practice Tutorial"
+author: "Chirag Parsania - CI Bioinformatics Club"
+format: html
+editor: visual
+---
+
+# 📝 Practice Questions
+
+## 📏 1. Vectors and Basic Operations
+
+1. Create a numeric vector of numbers from 1 to 10.
+2. Multiply each element of the vector by 3.
+3. Create a character vector of your favorite 5 fruits.
+4. Create a logical vector indicating whether elements of 1:10 are even.
+
+## 📦 2. Lists and Matrices
+
+5. Create a list containing your name, age, and a numeric vector of scores.
+6. Access the second score from the list.
+7. Create a 3x4 matrix of numbers from 1 to 12.
+8. Extract the element in the 3rd row and 2nd column of the matrix.
+
+## 📁 3. Data Frames and Factors
+
+9. Create a data frame with columns: Name, Age, and Gender (as factor) for 4 people.
+10. Add a column "Score" with random numbers between 60 and 100.
+11. Filter the data frame to show only rows where Score > 80.
+
+## 🔍 4. Subsetting
+
+12. From the data frame above, extract the "Name" and "Score" columns.
+13. Select the first 2 rows of the data frame.
+14. From a list of numbers, extract all values greater than 10.
+
+## 🔁 5. Loops and Conditionals
+
+15. Use a `for` loop to print numbers from 1 to 5.
+16. Use a `while` loop to print numbers from 10 down to 6.
+17. Use an `if-else` to print "Pass" if score > 60, otherwise "Fail".
+
+## 🛠️ 6. Functions
+
+18. Write a function that takes a vector and returns its mean.
+19. Write a function that checks whether a number is prime.
+20. Write a function that counts how many numbers in a vector are greater than the mean.
+
+---
+
+# ✅ Solutions
+
+## 1. Vectors and Basic Operations
+
+```{r}
+vec <- 1:10
+vec * 3
+fruits <- c("Apple", "Banana", "Mango", "Pineapple", "Grape")
+is_even <- vec %% 2 == 0
+```
+
+## 2. Lists and Matrices
+
+```{r}
+my_list <- list(name = "Alex", age = 28, scores = c(88, 76, 92))
+my_list$scores[2]
+
+my_matrix <- matrix(1:12, nrow = 3, ncol = 4)
+my_matrix[3, 2]
+```
+
+## 3. Data Frames and Factors
+
+```{r}
+df <- data.frame(
+  Name = c("Tom", "Sara", "Mike", "Lucy"),
+  Age = c(23, 25, 22, 24),
+  Gender = factor(c("M", "F", "M", "F"))
+)
+
+set.seed(123)
+df$Score <- sample(60:100, 4)
+
+df[df$Score > 80, ]
+```
+
+## 4. Subsetting
+
+```{r}
+df[, c("Name", "Score")]
+df[1:2, ]
+
+nums <- c(4, 9, 15, 20, 3)
+nums[nums > 10]
+```
+
+## 5. Loops and Conditionals
+
+```{r}
+for (i in 1:5) {
+  print(i)
+}
+
+x <- 10
+while (x >= 6) {
+  print(x)
+  x <- x - 1
+}
+
+score <- 70
+if (score > 60) {
+  print("Pass")
+} else {
+  print("Fail")
+}
+```
+
+## 6. Functions
+
+```{r}
+mean_func <- function(x) {
+  mean(x)
+}
+
+is_prime <- function(n) {
+  if (n < 2) return(FALSE)
+  for (i in 2:sqrt(n)) {
+    if (n %% i == 0) return(FALSE)
+  }
+  return(TRUE)
+}
+
+greater_than_mean <- function(x) {
+  sum(x > mean(x))
+}
+
+# Test
+mean_func(c(1, 2, 3, 4))
+is_prime(11)
+greater_than_mean(c(1, 5, 7, 2))
+```
+
+---

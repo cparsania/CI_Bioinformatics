@@ -1,0 +1,278 @@
+---
+title: "Cool Inbuilt R Functions"
+author: "CI Bioinformatics Club"
+format: html
+editor: visual
+---
+
+# 🧠 Introduction
+
+In this tutorial, we will explore some of the most commonly used and cool **inbuilt R functions**. These functions are great for performing simple tasks like calculating averages, sorting data, or even working with sample data. Let's dive in!
+
+---
+
+# 🔢 1. `mean()`: Calculate the Mean
+
+```{r}
+# Calculate the mean of a numeric vector
+numbers <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+mean_value <- mean(numbers)
+mean_value
+```
+
+---
+
+# 📊 2. `median()`: Calculate the Median
+
+```{r}
+# Calculate the median of a numeric vector
+median_value <- median(numbers)
+median_value
+```
+
+---
+
+# 🔀 3. `mode()`: Get the Mode (most frequent value)
+
+```{r}
+# Mode of a numeric vector (R doesn't have a built-in mode function, so we use a custom one)
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+mode_value <- getmode(c(1,2,2,3,4,4,4,5,5))
+mode_value
+```
+
+---
+
+# 🎲 4. `sample()`: Sample Random Elements
+
+```{r}
+# Sample 3 random elements from a vector
+random_sample <- sample(numbers, 3)
+random_sample
+```
+
+---
+
+# 🏆 5. `sort()`: Sort Data in Ascending or Descending Order
+
+```{r}
+# Sort the numbers in ascending order
+sorted_asc <- sort(numbers)
+sorted_asc
+
+# Sort the numbers in descending order
+sorted_desc <- sort(numbers, decreasing = TRUE)
+sorted_desc
+```
+
+---
+
+# ↕️ 6. `order()`: Get Order of Elements
+
+```{r}
+# Get the order of elements in a vector
+values <- c(20, 10, 40, 30)
+order(values)         # Indices that would sort the vector
+values[order(values)] # Sorted values using order
+```
+
+---
+
+# 🔎 7. `unique()`: Get Unique Values
+
+```{r}
+# Get unique values from a vector
+repeats <- c(1, 2, 2, 3, 3, 3, 4)
+unique(repeats)
+```
+
+---
+
+# ♻️ 8. `rev()`: Reverse a Vector
+
+```{r}
+# Reverse the elements of a vector
+rev(numbers)
+```
+
+---
+
+# 🔄 9. `rep()`: Repeat Elements
+
+```{r}
+# Repeat each element 3 times
+rep(c("A", "B"), each = 3)
+
+# Repeat entire vector 2 times
+rep(c("A", "B"), times = 2)
+```
+
+---
+
+# 📊 10. `summary()`: Get Summary Statistics
+
+```{r}
+# Get summary statistics of a numeric vector
+summary(numbers)
+```
+
+---
+
+# 📅 11. `seq()`: Generate Sequences
+
+```{r}
+# Generate a sequence from 1 to 10 by 2
+seq(1, 10, by = 2)
+```
+
+---
+
+# 📁 12. `str()`: Structure of Object
+
+```{r}
+# Check the structure of a data frame
+example_df <- data.frame(Name = c("Tom", "Sara"), Age = c(25, 28))
+str(example_df)
+```
+
+---
+
+# 📈 13. `head()` and `tail()`: Peek at Data
+
+```{r}
+# First few elements
+head(numbers, 3)
+
+# Last few elements
+tail(numbers, 3)
+```
+
+---
+
+# 📊 14. `table()`: Frequency Table
+
+```{r}
+# Frequency table of values
+table(c("apple", "banana", "apple", "cherry"))
+```
+
+---
+
+# ➕ 15. `paste()` and `paste0()`: Concatenate Strings
+
+```{r}
+# Paste with separator
+paste("Hello", "world", sep = " ")
+
+# Paste without separator
+paste0("gene", 1:3)
+```
+
+---
+
+# ⚖️ 16. `cut()`: Divide Numeric Data into Groups
+
+```{r}
+# Divide values into 3 groups
+x <- c(1, 5, 10, 15, 20)
+cut(x, breaks = 3)
+```
+
+---
+
+# 🏛️ 17. `round()`, `floor()`, `ceiling()`: Rounding Functions
+
+```{r}
+val <- 3.75
+round(val)    # Round to nearest
+floor(val)    # Round down
+ceiling(val)  # Round up
+```
+
+---
+
+# 📐 18. `which()`: Get Index of Matching Condition
+
+```{r}
+# Index of elements > 5
+which(numbers > 5)
+```
+
+---
+
+# 💯 19. `any()` and `all()`: Logical Check Functions
+
+```{r}
+# Check if any or all elements match a condition
+any(numbers > 5)  # TRUE if any value is > 5
+all(numbers > 5)  # TRUE only if all values are > 5
+```
+
+---
+
+# 🧪 20. `is.na()`: Check for Missing Values
+
+```{r}
+data <- c(1, 2, NA, 4)
+is.na(data)       # Logical vector indicating NA
+sum(is.na(data))  # Count of NAs
+```
+
+---
+
+# 📉 21. `na.omit()`: Remove Missing Values
+
+```{r}
+# Remove missing values from a vector
+data_no_na <- na.omit(data)
+data_no_na
+```
+
+---
+
+# 🧬 22. `length()`: Number of Elements
+
+```{r}
+# Get the number of elements in a vector
+length(numbers)
+```
+
+---
+
+# 🧩 23. `dim()`: Dimensions of Matrix or Data Frame
+
+```{r}
+m <- matrix(1:12, nrow = 3)
+dim(m)
+```
+
+---
+
+# 🛠️ 24. `names()`: Access or Set Names of Elements
+
+```{r}
+named_vec <- c(a = 1, b = 2, c = 3)
+names(named_vec)
+names(named_vec) <- c("x", "y", "z")
+named_vec
+```
+
+---
+
+# 📦 25. `append()`: Add Elements to a Vector
+
+```{r}
+vec <- c(1, 2, 3)
+append(vec, 4)           # Add 4 at the end
+append(vec, 0, after = 0) # Add 0 at the beginning
+```
+
+---
+
+# ✅ Conclusion
+
+These built-in R functions are essential tools for data manipulation and exploration. Get comfortable with them, and you'll have a strong foundation for more advanced work!
