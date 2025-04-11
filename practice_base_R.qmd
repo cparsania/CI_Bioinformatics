@@ -5,6 +5,20 @@ format: html
 editor: visual
 ---
 
+# 📚 What You'll Practice
+
+In this tutorial, you will practice the following foundational R concepts. Click a section to jump directly to it:
+
+- [📏 Vectors and Basic Operations](#-1-vectors-and-basic-operations)
+- [📦 Lists and Matrices](#-2-lists-and-matrices)
+- [📁 Data Frames and Factors](#-3-data-frames-and-factors)
+- [🔍 Subsetting](#-4-subsetting)
+- [🔁 Loops and Conditionals](#-5-loops-and-conditionals)
+- [🛠️ Functions](#-6-functions)
+- [🧪 Practice Using Inbuilt R Functions](#-7-practice-using-inbuilt-r-functions)
+
+Let’s jump into the practice!
+
 # 📝 Practice Questions
 
 ## 📏 1. Vectors and Basic Operations
@@ -44,6 +58,22 @@ editor: visual
 18. Write a function that takes a vector and returns its mean.
 19. Write a function that checks whether a number is prime.
 20. Write a function that counts how many numbers in a vector are greater than the mean.
+
+## 🧪 7. Practice Using Inbuilt R Functions
+
+21. Use `mean()` to calculate the average of a vector of your choice.
+22. Create a character vector with repeated fruit names and use `table()` to get the frequency of each.
+23. Create a vector with some missing values. Use `is.na()` and `na.omit()` to clean it.
+24. Take a vector and:
+   - Use `sort()` to sort it
+   - Use `order()` to get the index order
+   - Use `rev()` to reverse it
+25. Write a custom mode function using `unique()` and `tabulate()` and apply it on a test vector.
+26. Create a numeric vector of length 10 and generate 3 random samples using `sample()`.
+27. Concatenate strings using `paste()` and `paste0()` to build variable names dynamically.
+28. Generate a sequence of even numbers from 2 to 20 using `seq()`.
+29. Check whether any or all values in a vector are greater than 5 using `any()` and `all()`.
+30. Use `cut()` to divide a numeric vector into 4 bins.
 
 ---
 
@@ -138,5 +168,58 @@ mean_func(c(1, 2, 3, 4))
 is_prime(11)
 greater_than_mean(c(1, 5, 7, 2))
 ```
+
+## 7. Practice Using Inbuilt R Functions
+
+```{r}
+# Q21: mean()
+mean(c(4, 5, 6, 7, 8))
+
+# Q22: table()
+fruits <- c("apple", "banana", "apple", "mango", "banana", "apple")
+table(fruits)
+
+# Q23: is.na() and na.omit()
+vec <- c(1, 2, NA, 4, NA, 6)
+is.na(vec)
+clean_vec <- na.omit(vec)
+clean_vec
+
+# Q24: sort(), order(), rev()
+nums <- c(12, 3, 7, 1)
+sort(nums)
+order(nums)
+rev(nums)
+
+# Q25: custom mode function
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+getmode(c(1, 2, 2, 3, 3, 3, 4))
+
+# Q26: sample()
+x <- 1:10
+sample(x, 3)
+
+# Q27: paste() and paste0()
+paste("gene", 1:5, sep = "_")
+paste0("gene", 1:5)
+
+# Q28: seq()
+seq(2, 20, by = 2)
+
+# Q29: any() and all()
+y <- c(3, 7, 9)
+any(y > 5)
+all(y > 5)
+
+# Q30: cut()
+data <- c(5, 15, 25, 35, 45)
+cut(data, breaks = 4)
+```
+# 🎉 Wrap-up
+
+Great job working through these exercises! Keep practicing, explore more R functions, and don’t hesitate to experiment—because that’s where the real learning happens. Happy coding from the CI Bioinformatics Club! 🚀
 
 ---
