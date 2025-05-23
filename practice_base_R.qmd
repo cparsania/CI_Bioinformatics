@@ -24,9 +24,31 @@ Let’s jump into the practice!
 ## 📏 1. Vectors and Basic Operations
 
 1.  Create a numeric vector of numbers from 1 to 10.
+
+    ```{r}
+
+
+    x <- c(1,2,3,4,5,7,8,9,10)
+
+    x * 3
+
+    fav_fruits  =  c("apple", "banana", "pineapple", "guava", "mango")
+
+    ```
+
 2.  Multiply each element of the vector by 3.
+
 3.  Create a character vector of your favorite 5 fruits.
+
 4.  Create a logical vector indicating whether elements of 1:10 are even.
+
+    ```{r}
+
+    numbers[numbers %% 2 != 0]
+
+
+
+    ```
 
 ## 📦 2. Lists and Matrices
 
