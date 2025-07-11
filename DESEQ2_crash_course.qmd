@@ -6,6 +6,25 @@ format: html
 ---
 
 ```{r setup, include=FALSE}
+
+
+# Install BiocManager if not already installed
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+# List all required packages
+cran_pkgs <- c("tidyverse", "pheatmap", "RColorBrewer")
+bioc_pkgs <- c("DESeq2", "EnhancedVolcano", "biomaRt", "clusterProfiler", "org.Hs.eg.db")
+
+# Install CRAN packages (skip if already installed)
+install_cran <- cran_pkgs[!cran_pkgs %in% rownames(installed.packages())]
+if (length(install_cran) > 0) install.packages(install_cran)
+
+# Install Bioconductor packages (skip if already installed)
+install_bioc <- bioc_pkgs[!bioc_pkgs %in% rownames(installed.packages())]
+if (length(install_bioc) > 0) BiocManager::install(install_bioc)
+
+
 library(tidyverse)
 library(DESeq2)
 library(pheatmap)
@@ -25,9 +44,7 @@ data <- read_tsv("ago2_ko_counts.txt") %>%
 colData <- tibble(
   sample = colnames(data),
   condition = rep(c("A2KO", "WT"), each = 3)
-) %>% 
-  
-  column_to_rownames(var = "sample")
+) %>% column_to_rownames(var = "sample")
 
 # Create DESeq2 dataset
 dds <- DESeqDataSetFromMatrix(countData = as.matrix(data), 
@@ -115,10 +132,28 @@ EnhancedVolcano(resFilt,
 up_genes <- resFilt %>% filter(log2FoldChange > 1) %>% pull(entrezgene_id)
 down_genes <- resFilt %>% filter(log2FoldChange < -1) %>% pull(entrezgene_id)
 
-ego_up <- enrichGO(gene = up_genes, OrgDb = org.Hs.eg.db, keyType = "ENTREZID", ont = "BP", readable = TRUE,minGSSize = 10, maxGSSize =500, universe = res$entrezgene_id %>% as.character() %>% unique())
-ego_down <- enrichGO(gene = down_genes, OrgDb = org.Hs.eg.db, keyType = "ENTREZID", ont = "BP", readable = TRUE,minGSSize = 10, maxGSSize =500,universe = res$entrezgene_id %>% as.character() %>% unique())
+ego_up <- enrichGO(gene = up_genes, 
+                   OrgDb = org.Hs.eg.db, 
+                   keyType = "ENTREZID",
+                   ont = "BP", 
+                   readable = TRUE,
+                   minGSSize = 10, 
+                   maxGSSize =500, 
+                   universe = res$entrezgene_id %>% 
+                     as.character() %>% 
+                     unique())
+
+ego_down <- enrichGO(gene = down_genes, 
+                     OrgDb = org.Hs.eg.db, 
+                     keyType = "ENTREZID", 
+                     ont = "BP", 
+                     readable = TRUE,
+                     minGSSize = 10, 
+                     maxGSSize =500,
+                     universe = res$entrezgene_id %>% as.character() %>% unique())
 
 barplot(ego_up, showCategory = 15, title = "GO Enrichment for Upregulated Genes")
+
 barplot(ego_down, showCategory = 15, title = "GO Enrichment for Downregulated Genes")
 ```
 
